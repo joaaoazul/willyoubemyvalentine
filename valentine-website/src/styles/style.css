@@ -93,6 +93,7 @@ h1 {
     display: flex;
     gap: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .heart-option {
@@ -126,4 +127,37 @@ h1 {
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
+
+@media screen and (max-width: 768px) {
+    #hearts-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heart-option {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    #message {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .heart-option {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+}
+
 
