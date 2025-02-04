@@ -37,12 +37,12 @@ hearts.forEach((heart, index) => {
 
         if (index === correctHeart) {
             message.style.display = 'block';
-            this.src = './../assets/correct.png'; // Ajuste o caminho conforme necessário
+            this.src = './assets/images/correct.png'; // Ajuste o caminho conforme necessário
             gameOver = true; // O jogo acaba
             hearts.forEach(h => h.style.pointerEvents = 'none'); // Desativa todos os corações
         } else {
             this.style.animation = 'shake 0.5s';
-            this.src = './../assets/wrong.png'; // Ajuste o caminho conforme necessário
+            this.src = './assets/images/wrong.png'; // Ajuste o caminho conforme necessário
         
             
             setTimeout(() => {
