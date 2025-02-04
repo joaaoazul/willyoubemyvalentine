@@ -7,12 +7,10 @@ function initializeGame() {
             if (index === correctHeart) {
                 message.style.display = 'block';
                 this.src = './../assets/images/correct.png'; // Ajuste o caminho conforme necessário
-                this.style.border = '3px solid green';
                 gameOver = true;
                 hearts.forEach(h => h.style.pointerEvents = 'none');
             } else {
                 this.style.animation = 'shake 0.5s';
-                this.style.borderColor = 'red';
                 
                 setTimeout(() => {
                     this.style.animation = '';
@@ -25,7 +23,7 @@ function initializeGame() {
 }
 
 
-let correctHeart = Math.floor(Math.random() * 3);
+let correctHeart = Math.floor(Math.random() * 4);
 let gameOver = false;
 
 const hearts = document.querySelectorAll('.heart-option');
@@ -55,7 +53,7 @@ hearts.forEach((heart, index) => {
 });
 
 function randomizeCorrectHeart() {
-    correctHeart = Math.floor(Math.random() * 3);
+    correctHeart = Math.floor(Math.random() * 4);
     hearts.forEach((heart, index) => {
         heart.setAttribute('data-correct', index === correctHeart ? 'true' : 'false');
     });
