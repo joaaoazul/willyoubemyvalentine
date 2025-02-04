@@ -37,13 +37,13 @@ hearts.forEach((heart, index) => {
 
         if (index === correctHeart) {
             message.style.display = 'block';
-            this.src = './../assets';
-            this.style.border = '3px solid green';
+            this.src = './../assets/correct.png'; // Ajuste o caminho conforme necessário
             gameOver = true; // O jogo acaba
             hearts.forEach(h => h.style.pointerEvents = 'none'); // Desativa todos os corações
         } else {
             this.style.animation = 'shake 0.5s';
-            this.style.borderColor = 'red';
+            this.src = './../assets/wrong.png'; // Ajuste o caminho conforme necessário
+        
             
             setTimeout(() => {
                 this.style.animation = '';
