@@ -1,21 +1,29 @@
-document.querySelectorAll('.heart-option').forEach(heart => {
-    heart.addEventListener('click', function() {
-        if (this.getAttribute('data-correct') === 'true') {
-            document.getElementById('message').style.display = 'block';
-            this.style.border = '3px solid green';
-        } else {
-            // Adicionar feedback de erro
-            this.style.animation = 'shake 0.5s';
-            this.style.borderColor = 'red';
-            
-            // Remover a animação após terminar
-            setTimeout(() => {
-                this.style.animation = '';
-                this.style.borderColor = '';
-            }, 500);
-        }
+function initializeGame() {
+    randomizeCorrectHeart();
+    hearts.forEach((heart, index) => {
+        heart.addEventListener('click', function() {
+            if (gameOver) return;
+
+            if (index === correctHeart) {
+                message.style.display = 'block';
+                this.src = './../assets/images/correct.png'; // Ajuste o caminho conforme necessário
+                this.style.border = '3px solid green';
+                gameOver = true;
+                hearts.forEach(h => h.style.pointerEvents = 'none');
+            } else {
+                this.style.animation = 'shake 0.5s';
+                this.style.borderColor = 'red';
+                
+                setTimeout(() => {
+                    this.style.animation = '';
+                    this.style.borderColor = '';
+                    if (!gameOver) randomizeCorrectHeart();
+                }, 500);
+            }
+        });
     });
-});
+}
+
 
 let correctHeart = Math.floor(Math.random() * 3);
 let gameOver = false;
@@ -58,13 +66,11 @@ let game = document.getElementById('game');
 let heartButton = document.getElementById('btn1').addEventListener('click', showGame);
 
 function showGame() {
-    if (!landingPage.classList.contains('hidden')) {
-        landingPage.classList.add('hidden');
+    landingPage.classList.add('hidden');
+    landingPage.addEventListener('transitionend', () => {
         game.classList.remove('hidden');
-    }
-
-    setTimeout(() => {
-        game.style.display = "block";
-      }, 300); // Duração igual à transição (0.3s)
-
+        game.style.opacity = '1';
+        game.style.visibility = 'visible';
+        initializeGame();
+    }, { once: true });
 }
