@@ -35,6 +35,18 @@ hero {
     text-align: center;
 }
 
+#landing-page, #game {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+    opacity: 1;
+    visibility: visible;
+}
+
+#landing-page.hidden, #game.hidden {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute; /* Remove do fluxo do documento quando escondido */
+}
+
 h1 {
     font-size: 70px;
     margin-bottom: 40px;
