@@ -23,7 +23,7 @@ function initializeGame() {
 }
 
 
-let correctHeart = Math.floor(Math.random() * 4);
+let correctHeart = Math.floor(Math.random() * 5);
 let gameOver = false;
 
 const hearts = document.querySelectorAll('.heart-option');
@@ -53,7 +53,7 @@ hearts.forEach((heart, index) => {
 });
 
 function randomizeCorrectHeart() {
-    correctHeart = Math.floor(Math.random() * 4);
+    correctHeart = Math.floor(Math.random() * 5);
     hearts.forEach((heart, index) => {
         heart.setAttribute('data-correct', index === correctHeart ? 'true' : 'false');
     });
